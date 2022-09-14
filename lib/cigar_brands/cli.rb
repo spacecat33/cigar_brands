@@ -48,6 +48,9 @@ class CigarBrands::CLI
     def show_results_for(chosen_page)
         page = @page_numbers[chosen_page + 1] #or should it be - 1?
         puts "Here are the results for #{page}"
-        binding.pry
+        # CigarBrands::CLI.all.each.with_index(1) do | brand |
+        #   puts brand.name
+        # end 
+        # get_chosen_brand
     end
 end
