@@ -5,8 +5,8 @@ require_relative "lib/cigar_brands/version"
 Gem::Specification.new do |spec|
   spec.name = "cigar_brands"
   spec.version = CigarBrands::VERSION
-  spec.authors = ["Janan Akkad"]
-  spec.email = ["jananakkad@hotmail.co.uk"]
+  spec.authors = ["spacecat33"]
+  spec.email = ["spacecat33"]
 
   spec.summary = "TODO: Write a short summary, because RubyGems requires one."
   spec.description = "TODO: Write a longer description or delete this line."
