@@ -10,7 +10,8 @@ class CigarBrands::CLI
         puts "Here you can find information on different cigar brands!"
         puts ""
         get_page_numbers
-        show_page_results
+        list_page_results
+        get_user_page_number
         # puts "\n#{@@grn}There are 51 brands available, to view them, please type "brands" or type "exit" to exit this programme#{@@white}\n" # list_brands
         # user_chooses_brand(number)
         # get_brand_details(number)
@@ -26,10 +27,23 @@ class CigarBrands::CLI
         @page_numbers = [7, 8, 9]
     end
 
-    def show_page_results
+    def list_page_results
         # list results    
-        @page_numbers.each.with_index { |page_number, index|
-            puts "#{index + 1} #{page_number}"
-    }
+        puts "\n#{@@grn}Choose a page number to see a list of brands.#{@@white}\n"
+        puts ""
+        @page_numbers.each.with_index(1) do |page_number, index|
+            puts "#{index} #{page_number}"
+        end
+    end
+
+    def get_user_page_number
+        chosen_page = gets.strip.to_i
+        binding.pry
+        # if valid_input(chosen_page, @page_numbers)
+        # end
+    end
+
+    def valid_input(input, data)
+        input.to_i <= @page_numbers.length && input.to_i > 0
     end
 end
