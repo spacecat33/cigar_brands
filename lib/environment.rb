@@ -3,6 +3,8 @@
 require_relative "cigar_brands/version"
 require_relative "cigar_brands/cli.rb"
 
+require "pry"
+
 module CigarBrands
   class Error < StandardError; end
   # Your code goes here...
