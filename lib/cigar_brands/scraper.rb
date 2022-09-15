@@ -6,10 +6,10 @@ class CigarBrands::Scraper
 
     def self.show_page_results(page_number)
         doc = Nokogiri::HTML(URI.open("http://www.cigargeeks.com/cigardb/default.asp?action=&page=#{page_number}"))
-        results = doc.css('.bbstable a')
-        
-        results.each do |r|
-            puts r.text.strip
+        @results = doc.css('.bbstable a')
+
+        @results.each.with_index(1) do |r, index|
+            puts "#{index}. #{r.text.strip}"
         end
     end
 

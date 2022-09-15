@@ -66,8 +66,12 @@ class CigarBrands::CLI
     end
 
     def display_results(page_number)
-        puts "Here are the results for page #{@page_numbers}"
+        puts "Here are the results for page #{@page_number}"
+        puts ""
         @results = CigarBrands::Scraper.show_page_results(@page_number)
+        puts ""
+        puts "Please select a number from the list above to view cigars associated with the brand or type exit to select a new page number"
+        puts""
     end
 end
 
