@@ -37,6 +37,7 @@ class CigarBrands::CLI
         break if @page_number.between?(1,72)
         puts  "Invalid entry. Please type your chosen page number between 1 and 72."
         end
+        display_results(@page_number)
     end
     
 
@@ -68,22 +69,32 @@ class CigarBrands::CLI
         puts ""
         puts "Please select a number from the list above to view cigars associated with the brand or type exit to select a new page number"
         puts""
-        # user_input
+        user_input
     end
 
-    # def user_input
-    # @user_input = = gets.strip.downcase
+    def user_input
+        @user_input = gets.strip
 
-    # if @user_input == "exit"
-    #     list_page_numbers
-    # elsif @user_input == gets.strip.to_i
-
-
+        if @user_input.downcase == "back"
+            list_page_numbers
+        elsif @user_input.downcase == "exit"
+            exit
+        # elsif @user_input.to_i < @results.length && @user_input.to_i > 0
+        #     show_results_for(brand)
+        else
+            puts  "Invalid entry. Please [select a number from the list to view cigars associated with the brand,] type brand to select a new page number or type exit to exit the programme"
+            # display_result(@page_number)
+        end
+    end
+    
+    # def valid_input(user_input, data)
+    #     @user.input.to_i <= @results.length && @user_input.to_i > 0
     # end
 
-
-    # def exit
-    # end
+    def exit
+        puts "Thank you for visiting!"
+        call
+    end
 end
 
 
