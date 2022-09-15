@@ -11,3 +11,7 @@ Classes
 - Brand
 - CLI
 - Scraper
+
+
+- get some scraped data
+- allow user to select a different page number

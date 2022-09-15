@@ -23,8 +23,9 @@ class CigarBrands::CLI
     # end
 
     def get_page_numbers
-        # to be scraped instead
-        @page_numbers = [7, 8, 9]
+        CigarBrands::Page.new("testing")
+        CigarBrands::Page.new("fake data")
+        @page_numbers = CigarBrands::Page.all 
     end
 
     def list_page_numbers
@@ -32,7 +33,7 @@ class CigarBrands::CLI
         puts "\n#{@@grn}Choose a page number to see a list of brands.#{@@white}\n"
         puts ""
         @page_numbers.each.with_index(1) do |page_number, index|
-            puts "#{index} #{page_number}"
+            puts "#{index} #{page_number.number}"
         end
     end
 
@@ -47,7 +48,8 @@ class CigarBrands::CLI
 
     def show_results_for(chosen_page)
         page = @page_numbers[chosen_page + 1] #or should it be - 1?
-        puts "Here are the results for #{page}"
+        puts "Here are the results for page #{chosen_page}"
+        ## To implement
         # CigarBrands::CLI.all.each.with_index(1) do | brand |
         #   puts brand.name
         # end 
