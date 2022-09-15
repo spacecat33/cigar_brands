@@ -7,6 +7,7 @@ require_relative "cigar_brands/scraper.rb"
 
 require "pry"
 require "nokogiri"
+require "open-uri"
 
 module CigarBrands
   class Error < StandardError; end

@@ -12,6 +12,7 @@ class CigarBrands::CLI
         get_page_numbers
         list_page_numbers
         get_user_page_number
+        display_results
         # puts "\n#{@@grn}There are 51 brands available, to view them, please type "brands" or type "exit" to exit this programme#{@@white}\n" # list_brands
         # user_chooses_brand(number)
         # get_brand_details(number)
@@ -23,8 +24,6 @@ class CigarBrands::CLI
     # end
 
     def get_page_numbers
-        CigarBrands::Page.new("testing")
-        CigarBrands::Page.new("fake data")
         @page_numbers = CigarBrands::Page.all 
     end
 
@@ -49,10 +48,16 @@ class CigarBrands::CLI
     def show_results_for(chosen_page)
         page = @page_numbers[chosen_page + 1] #or should it be - 1?
         puts "Here are the results for page #{chosen_page}"
+        display_results
+
         ## To implement
         # CigarBrands::CLI.all.each.with_index(1) do | brand |
         #   puts brand.name
         # end 
         # get_chosen_brand
+    end
+
+    def display_results
+        @results = CigarBrands::Page.results 
     end
 end
