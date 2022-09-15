@@ -6,10 +6,19 @@ class CigarBrands::Scraper
 
     def self.show_page_results(page_number)
         doc = Nokogiri::HTML(URI.open("http://www.cigargeeks.com/cigardb/default.asp?action=&page=#{page_number}"))
-        @results = doc.css('.bbstable a')
+        @results = doc.css(".bbstable a")
 
         @results.each.with_index(1) do |r, index|
             puts "#{index}. #{r.text.strip}"
+        end
+    end
+
+    def self.show_brand_details(brand)
+        doc = Nokogiri::HTML(URI.open("http://www.cigargeeks.com/cigardb/default.asp?action=srchrslt&cigar_brand=#{@brand}"))
+        @brand = doc.css(".bbstable tr td")
+
+        @brand.each.with_index(1) do |b, index|
+            puts "#{index}. #{b.text.strip}"
         end
     end
 
@@ -29,5 +38,7 @@ end
 #   puts r.text.strip
 # end
 # puts ''
+
+# for brand's cigar details: doc.css('.bbstable tr')
 # puts 'Finished loading'
 

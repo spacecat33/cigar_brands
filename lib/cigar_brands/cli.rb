@@ -1,7 +1,7 @@
 
 class CigarBrands::CLI 
     
-    attr_accessor :page_number
+    attr_accessor :page_number, :brand
 
     @@grn="\e[1;32m"
     @@white="\e[0m"
@@ -67,22 +67,36 @@ class CigarBrands::CLI
         puts ""
         @results = CigarBrands::Scraper.show_page_results(@page_number)
         puts ""
-        puts "Please select a number from the list above to view cigars associated with the brand or type exit to select a new page number"
+        puts "Please select a number from the list above to view cigars associated with the brand"
+        puts""
+        @brand = gets.strip.downcase
+        display_cigars(@brand)
+        # user_input
+    end
+
+    def display_cigars(brand)
+        puts "Here are the results for brand name #{@brand}"
+        puts ""
+        @brand = CigarBrands::Scraper.show_brand_details(@brand)
+        puts "Please type back to select a new brand name or exit to restart the programme"
         puts""
         user_input
     end
+
 
     def user_input
         @user_input = gets.strip
 
         if @user_input.downcase == "back"
+            display_results(page_number)
+        elsif @user_input.downcase == "restart"
             list_page_numbers
         elsif @user_input.downcase == "exit"
             exit
         # elsif @user_input.to_i < @results.length && @user_input.to_i > 0
         #     show_results_for(brand)
         else
-            puts  "Invalid entry. Please [select a number from the list to view cigars associated with the brand,] type brand to select a new page number or type exit to exit the programme"
+            puts  "Invalid entry." #"Please [select a number from the list to view cigars associated with the brand,] type brand to select a new page number or type exit to exit the programme"
             # display_result(@page_number)
         end
     end
