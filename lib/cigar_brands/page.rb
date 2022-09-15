@@ -13,9 +13,9 @@ class CigarBrands::Page
         @@all
     end
 
-    def self.results
-        CigarBrands::Scraper.show_page_results(@page_number)
-    end
+    # def self.results
+    #     CigarBrands::Scraper.show_page_results(@page_number)
+    # end
 
     def save
         @@all << self

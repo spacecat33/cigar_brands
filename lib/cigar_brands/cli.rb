@@ -12,9 +12,8 @@ class CigarBrands::CLI
         puts ""
         puts "Here you can find information on different cigar brands!"
         puts ""
-        get_page_numbers
+        # get_page_numbers
         list_page_numbers
-        # get_user_page_number
         display_results(@page_number)
         # puts "\n#{@@grn}There are 51 brands available, to view them, please type "brands" or type "exit" to exit this programme#{@@white}\n" # list_brands
         # user_chooses_brand(number)
@@ -26,21 +25,18 @@ class CigarBrands::CLI
         
     # end
 
-    def get_page_numbers
-        @page_number = CigarBrands::Page.all 
-    end
+    # def get_page_numbers
+    #     @page_number = CigarBrands::Page.all 
+    # end
 
     def list_page_numbers
-        loop do
-        # list results    
+        loop do 
         puts "\n#{@@grn}Choose a page number between 1 and 72 to see a list of brands.#{@@white}\n"
         puts ""
         @page_number = gets.strip.to_i
         break if @page_number.between?(1,72)
         puts  "Invalid entry. Please type your chosen page number between 1 and 72."
         end
-        # puts "Here are the results for page #{@page_number}"
-        # @results = CigarBrands::Scraper.show_page_results(page_number)
     end
     
 
@@ -49,21 +45,21 @@ class CigarBrands::CLI
     #     show_results_for(chosen_page) if valid_input(chosen_page, @page_numbers)
     # end
 
-    def valid_input(input, data)
-        input.to_i <= @page_numbers.length && input.to_i > 0
-    end
+    # def valid_input(input, data)
+    #     input.to_i <= @page_numbers.length && input.to_i > 0
+    # end
 
-    def show_results_for(chosen_page)
-        page = @page_numbers[chosen_page + 1] #or should it be - 1?
-        puts "Here are the results for page #{chosen_page}"
-        display_results
+    # def show_results_for(chosen_page)
+    #     page = @page_numbers[chosen_page + 1] #or should it be - 1?
+    #     puts "Here are the results for page #{chosen_page}"
+    #     display_results
 
-        ## To implement
-        # CigarBrands::CLI.all.each.with_index(1) do | brand |
-        #   puts brand.name
-        # end 
-        # get_chosen_brand
-    end
+    #     ## To implement
+    #     # CigarBrands::CLI.all.each.with_index(1) do | brand |
+    #     #   puts brand.name
+    #     # end 
+    #     # get_chosen_brand
+    # end
 
     def display_results(page_number)
         puts "Here are the results for page #{@page_number}"
@@ -72,7 +68,22 @@ class CigarBrands::CLI
         puts ""
         puts "Please select a number from the list above to view cigars associated with the brand or type exit to select a new page number"
         puts""
+        # user_input
     end
+
+    # def user_input
+    # @user_input = = gets.strip.downcase
+
+    # if @user_input == "exit"
+    #     list_page_numbers
+    # elsif @user_input == gets.strip.to_i
+
+
+    # end
+
+
+    # def exit
+    # end
 end
 
 
