@@ -1,8 +1,8 @@
 class CigarBrands::Scraper 
-    def self.scrape_pages(page_number = 1)
-        doc = Nokogiri::HTML(URI.open("http://www.cigargeeks.com/cigardb/default.asp?action=&page=#{page_number}"))
-        CigarBrands::Page.new(@page_number)
-    end
+    # def self.scrape_pages(page_number = 1)
+    #     doc = Nokogiri::HTML(URI.open("http://www.cigargeeks.com/cigardb/default.asp?action=&page=#{page_number}"))
+    #     CigarBrands::Page.new(@page_number)
+    # end
 
     # def self.show_page_results(page_number)
     #     doc = Nokogiri::HTML(URI.open("http://www.cigargeeks.com/cigardb/default.asp?action=&page=#{page_number}"))
