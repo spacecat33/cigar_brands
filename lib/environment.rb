@@ -4,6 +4,9 @@ require_relative "cigar_brands/version"
 require_relative "cigar_brands/cli.rb"
 require_relative "cigar_brands/page.rb"
 require_relative "cigar_brands/scraper.rb"
+require_relative "cigar_brands/brand.rb"
+require_relative "cigar_brands/cigar.rb"
+
 
 require "pry"
 require "nokogiri"

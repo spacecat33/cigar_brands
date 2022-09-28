@@ -33,6 +33,7 @@ Gem::Specification.new do |spec|
 
   # Uncomment to register a new dependency of your gem
   spec.add_development_dependency "pry"
+  spec.add_development_dependency "bundler", "~> 2.0"
   spec.add_dependency "nokogiri"
 
 

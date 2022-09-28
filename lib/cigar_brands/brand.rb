@@ -1,15 +1,15 @@
-class CigarBrands::Page
+class CigarBrands::Brand
     @@all = []
 
-    attr_accessor :page_number
+    attr_accessor :name
 
-    def initialize(page_number)
-        @page_number = page_number
+    def initialize(name)
+        @name = name
         save
     end
 
     def self.all
-        CigarBrands::Scraper.scrape_pages(@page_number) if @@all.empty?
+        CigarBrands::Scraper.get_brand_details if @@all.empty?
         @@all
     end
 
