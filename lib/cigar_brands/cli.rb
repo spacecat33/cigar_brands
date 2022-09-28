@@ -139,7 +139,7 @@ class CigarBrands::CLI
             puts "#{index}. #{more.name}."
         end
         # binding.pry
-        # user_input
+        user_input
     end
 
     # def display_results(page_number)

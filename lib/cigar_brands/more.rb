@@ -1,5 +1,5 @@
 class CigarBrands::More
-    attr_accessor :name, :cigar, :review
+    attr_accessor :name, :cigar #:review
     
     @@all = []
    
