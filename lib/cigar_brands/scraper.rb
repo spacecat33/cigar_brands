@@ -27,7 +27,7 @@ class CigarBrands::Scraper
     def self.get_brandcigar_details
         doc = Nokogiri::HTML(URI.open("http://www.cigargeeks.com/cigardb/default.asp?action=&page=1"))
         
-        names = doc.css(".bbstable tr td") 
+        names = doc.css(".bbstable tr") 
 
         names.each do |n|
             name = n.text

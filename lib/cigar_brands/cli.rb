@@ -15,10 +15,14 @@ class CigarBrands::CLI
         # get_page_numbers
         # list_test_pages
         # list_page_numbers
-        get_brand_results
-        display_brand_results
-        get_user_brand
-        get_cigar_results
+        get_testbrand_results
+        display_testbrand_results
+        get_testuser_brand
+        get_testcigar_results
+        display_testcigar_results
+        get_testuser_cigar
+        
+        
         # display_results(@page_number)
         # puts "\n#{@@grn}There are 51 brands available, to view them, please type "brands" or type "exit" to exit this programme#{@@white}\n" # list_brands
         # user_chooses_brand(number)
@@ -30,30 +34,30 @@ class CigarBrands::CLI
         
     # end
 
-    def get_page_numbers
-        @pages = CigarBrands::Page.all 
-        # binding.pry
-    end
+    # def get_page_numbers
+    #     @pages = CigarBrands::Page.all 
+    #     # binding.pry
+    # end
 
-    def list_test_pages
-        puts "tester page_number list"
-        @pages.each.with_index(1) do |page, index|
-            puts "#{index}. #{page.page_number}"
-        end
-        puts "tester page_number list end"
-        binding.pry
-    end
+    # def list_test_pages
+    #     puts "tester page_number list"
+    #     @pages.each.with_index(1) do |page, index|
+    #         puts "#{index}. #{page.page_number}"
+    #     end
+    #     puts "tester page_number list end"
+    #     binding.pry
+    # end
 
-    def list_page_numbers
-        loop do 
-        puts "\n#{@@grn}Choose a page number between 1 and 72 to see a list of brands.#{@@white}\n"
-        puts ""
-        @page_number = gets.strip.to_i
-        break if @page_number.between?(1,72)
-        puts  "Invalid entry. Please type your chosen page number between 1 and 72."
-        end
-        # display_results(@page_number)
-    end
+    # def list_page_numbers
+    #     loop do 
+    #     puts "\n#{@@grn}Choose a page number between 1 and 72 to see a list of brands.#{@@white}\n"
+    #     puts ""
+    #     @page_number = gets.strip.to_i
+    #     break if @page_number.between?(1,72)
+    #     puts  "Invalid entry. Please type your chosen page number between 1 and 72."
+    #     end
+    #     # display_results(@page_number)
+    # end
     
 
     # def get_user_page_number
@@ -77,12 +81,12 @@ class CigarBrands::CLI
     #     # get_chosen_brand
     # end
 
-    def get_brand_results
+    def get_testbrand_results
         # CigarBrands::Scraper.get_brand_details(@page_number)
         @brands = CigarBrands::Brand.all  
     end
 
-    def display_brand_results
+    def display_testbrand_results
         puts "tester brand list"
         @brands.each.with_index(1) do |brand, index|
             puts "#{index}. #{brand.name}"
@@ -90,7 +94,7 @@ class CigarBrands::CLI
         puts "tester brand list end"
     end
 
-    def get_user_brand
+    def get_testuser_brand
         puts "test ask user to choose brand (note that 'advanced search' returns nil so we recommend you start from 2 onwards"
         chosen_brand = gets.strip.to_i  
         show_brand_for(chosen_brand) if valid_input(chosen_brand, @brands)
@@ -101,54 +105,71 @@ class CigarBrands::CLI
         puts "Here are test brands for #{brand.name}"
     end
 
-    def get_cigar_results
+    def get_testcigar_results
         # CigarBrands::Scraper.get_brand_details(@page_number)
         @cigars = CigarBrands::Cigar.all  
         puts "got test cigar results"
-        binding.pry
+        # binding.pry
     end
 
+    
 
-    def display_results(page_number)
-        puts "Here are the results for page #{@page_number}"
-        puts ""
-        @results = CigarBrands::Scraper.show_page_results(@page_number)
-        # puts ""
-        # puts "Please type the brand name in to view cigars associated with the brand"
-        # puts""
-        # @brand = gets.strip.downcase
-        # display_cigars(@brand) #possibly change brand to cigar?
-        # user_input
+    def display_testcigar_results
+        puts "tester cigar list"
+        @cigars.each.with_index(1) do |cigar, index|
+            puts "#{index}. #{cigar.name}"
+        end
+        puts "tester cigar list end"
     end
 
-    def display_cigars(brand)
-        puts ""
-        puts "Please type the brand name in to view cigars associated with the brand"
-        puts""
-        @brand = gets.strip.downcase
-        puts "Here are the results for brand name #{@brand}"
-        puts ""
-        @brand = CigarBrands::Scraper.show_brand_details(@brand)
-        puts "Please type back to select a new brand name or exit to restart the programme"
-        puts""
+    def get_testuser_cigar
+        puts "test ask user to choose cigar"
+        chosen_cigar = gets.strip.to_i  
+        show_cigar_for(chosen_cigar) if valid_input(chosen_cigar, @cigars)
+    end
+
+    def show_cigar_for(chosen_cigar)
+        cigar = @cigars[chosen_cigar - 1]
+        puts "Here are test cigars for #{cigar.name}"
         user_input
     end
 
+    # def display_results(page_number)
+    #     puts "Here are the results for page #{@page_number}"
+    #     puts ""
+    #     @results = CigarBrands::Scraper.show_page_results(@page_number)
+    #     # puts ""
+    #     # puts "Please type the brand name in to view cigars associated with the brand"
+    #     # puts""
+    #     # @brand = gets.strip.downcase
+    #     # display_cigars(@brand) #possibly change brand to cigar?
+    #     # user_input
+    # end
+
+    # def display_cigars(brand)
+    #     puts ""
+    #     puts "Please type the brand name in to view cigars associated with the brand"
+    #     puts""
+    #     @brand = gets.strip.downcase
+    #     puts "Here are the results for brand name #{@brand}"
+    #     puts ""
+    #     @brand = CigarBrands::Scraper.show_brand_details(@brand)
+    #     puts "Please type back to select a new brand name or exit to restart the programme"
+    #     puts""
+    #     # user_input
+    # end
+
 
     def user_input
+        puts "Please type 'back' to select a new cigar name or 'exit' to restart the programme"
+        puts""
         @user_input = gets.strip.downcase
-
         if @user_input.downcase == "back"
-            display_results(page_number)
-        # elsif @user_input.downcase == "restart"
-        #     list_page_numbers
+            call     
         elsif @user_input.downcase == "exit"
             exit
-        # elsif @user_input.to_i < @results.length && @user_input.to_i > 0
-        #     show_results_for(brand)
         else
-            puts  "Invalid entry." #"Please [select a number from the list to view cigars associated with the brand,] type brand to select a new page number or type exit to exit the programme"
-            # display_result(@page_number)
+            puts  "Invalid entry." 
         end
     end
     
@@ -158,7 +179,14 @@ class CigarBrands::CLI
 
     def exit
         puts "Thank you for visiting!"
-        call
+        puts "Type 'restart' to restart the programme"
+        puts""
+        @user_input = gets.strip.downcase
+        if @user_input.downcase == "restart"
+            call     
+        else
+            puts  "Invalid entry." 
+        end
     end
 end
 
