@@ -22,7 +22,7 @@ class CigarBrands::CLI
         get_testuser_brand
         get_testcigar_results
         display_testcigar_results
-        # get_testuser_cigar
+        get_testuser_cigar
         
         
         # display_results(@page_number)
@@ -122,7 +122,7 @@ class CigarBrands::CLI
             puts "#{index}. #{cigar.name}"
         end
         puts "tester cigar list end"
-        user_input
+        # user_input
     end
 
     def get_testuser_cigar
@@ -133,8 +133,13 @@ class CigarBrands::CLI
 
     def show_cigar_for(chosen_cigar)
         cigar = @cigars[chosen_cigar - 1]
+        cigar.get_more
         puts "\n#{@@blu}Here are test cigars for #{cigar.name}#{@@white}\n"
-        user_input
+        cigar.more.each.with_index(1) do |more, index|
+            puts "#{index}. #{more.name}."
+        end
+        # binding.pry
+        # user_input
     end
 
     # def display_results(page_number)

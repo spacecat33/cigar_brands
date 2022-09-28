@@ -5,6 +5,7 @@ require_relative "cigar_brands/cli.rb"
 require_relative "cigar_brands/scraper.rb"
 require_relative "cigar_brands/brand.rb"
 require_relative "cigar_brands/cigar.rb"
+require_relative "cigar_brands/more.rb"
 
 
 require "pry"

@@ -1,10 +1,12 @@
 class CigarBrands::Cigar
+    attr_accessor :name, :more
+    
     @@all = []
-
-    attr_accessor :name
+   
 
     def initialize(name)
         @name = name
+        @more = []
         save
     end
 
@@ -13,6 +15,9 @@ class CigarBrands::Cigar
         @@all
     end
 
+    def get_more  
+        CigarBrands::Scraper.get_cigarmore(self) if @more.empty?
+    end
 
     def save
         @@all << self
