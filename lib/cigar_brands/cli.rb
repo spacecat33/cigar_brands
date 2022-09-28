@@ -1,10 +1,11 @@
 
 class CigarBrands::CLI 
     
-    attr_accessor :page_number, :brand
+    # attr_accessor :page_number, :brand
 
     @@grn="\e[1;32m"
     @@white="\e[0m"
+    @@blu="\e[1;34m"
 
     def call
         puts ""
@@ -20,7 +21,7 @@ class CigarBrands::CLI
         get_testuser_brand
         get_testcigar_results
         display_testcigar_results
-        get_testuser_cigar
+        # get_testuser_cigar
         
         
         # display_results(@page_number)
@@ -66,7 +67,7 @@ class CigarBrands::CLI
     # end
 
     def valid_input(input, data)
-        input.to_i <= @brands.length && input.to_i > 0
+        input.to_i <= data.length && input.to_i > 0
     end
 
     # def show_results_for(chosen_page)
@@ -87,7 +88,7 @@ class CigarBrands::CLI
     end
 
     def display_testbrand_results
-        puts "tester brand list"
+        puts "\n#{@@blu}tester brand list"
         @brands.each.with_index(1) do |brand, index|
             puts "#{index}. #{brand.name}"
         end
@@ -95,14 +96,14 @@ class CigarBrands::CLI
     end
 
     def get_testuser_brand
-        puts "test ask user to choose brand (note that 'advanced search' returns nil so we recommend you start from 2 onwards"
+        puts "\n#{@@grn}test ask user to choose brand (note that 'advanced search' returns nil so we recommend you start from 2 onwards"
         chosen_brand = gets.strip.to_i  
         show_brand_for(chosen_brand) if valid_input(chosen_brand, @brands)
     end
 
     def show_brand_for(chosen_brand)
         brand = @brands[chosen_brand - 1]
-        puts "Here are test brands for #{brand.name}"
+        puts "\n#{@@blu}Here are test cigar details for #{brand.name}"
     end
 
     def get_testcigar_results
@@ -120,17 +121,18 @@ class CigarBrands::CLI
             puts "#{index}. #{cigar.name}"
         end
         puts "tester cigar list end"
+        user_input
     end
 
     def get_testuser_cigar
-        puts "test ask user to choose cigar"
+        puts "\n#{@@grn}test ask user to choose cigar"
         chosen_cigar = gets.strip.to_i  
         show_cigar_for(chosen_cigar) if valid_input(chosen_cigar, @cigars)
     end
 
     def show_cigar_for(chosen_cigar)
         cigar = @cigars[chosen_cigar - 1]
-        puts "Here are test cigars for #{cigar.name}"
+        puts "\n#{@@blu}Here are test cigars for #{cigar.name}#{@@white}\n"
         user_input
     end
 
@@ -161,7 +163,7 @@ class CigarBrands::CLI
 
 
     def user_input
-        puts "Please type 'back' to select a new cigar name or 'exit' to restart the programme"
+        puts "#{@@grn} Above are your results. Please type \n#{@@white}'back'#{@@grn}\n to select a new brand name or \n#{@@white}'exit'#{@@grn}\n to restart the programme.#{@@white}\n"
         puts""
         @user_input = gets.strip.downcase
         if @user_input.downcase == "back"
