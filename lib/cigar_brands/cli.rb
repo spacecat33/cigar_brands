@@ -6,6 +6,7 @@ class CigarBrands::CLI
     @@grn="\e[1;32m"
     @@white="\e[0m"
     @@blu="\e[1;34m"
+    @@cyn="\e[1;36m"
 
     def call
         puts ""
@@ -163,7 +164,7 @@ class CigarBrands::CLI
 
 
     def user_input
-        puts "#{@@grn} Above are your results. Please type \n#{@@white}'back'#{@@grn}\n to select a new brand name or \n#{@@white}'exit'#{@@grn}\n to restart the programme.#{@@white}\n"
+        puts "#{@@grn} Above are your results. Please type #{@@white}'back'#{@@grn} to select a new brand name or #{@@white}'exit'#{@@grn} to restart the programme.#{@@white}\n"
         puts""
         @user_input = gets.strip.downcase
         if @user_input.downcase == "back"
@@ -180,8 +181,10 @@ class CigarBrands::CLI
     # end
 
     def exit
-        puts "Thank you for visiting!"
-        puts "Type 'restart' to restart the programme"
+        puts ""
+        puts "\n#{@@cyn}Thank you for visiting!"
+        puts ""
+        puts "\n#{@@grn}Type #{@@white}'restart'#{@@grn} to restart the programme#{@@white}\n"
         puts""
         @user_input = gets.strip.downcase
         if @user_input.downcase == "restart"
