@@ -35,17 +35,17 @@ class CigarBrands::Scraper
         end
     end
 
-    def self.get_cigarmore(cigar)
-        CigarBrands::More.new("cool info", cigar)
-        CigarBrands::More.new("uncool info", cigar)
-        # doc = Nokogiri::HTML(URI.open("http://www.cigargeeks.com/reviews/default.asp"))
-        # more = doc.css(".bbstable tr td") 
+    # def self.get_cigarmore(cigar) # for 'more'
+    #     CigarBrands::More.new("cool info", cigar)
+    #     CigarBrands::More.new("uncool info", cigar)
+    #     # doc = Nokogiri::HTML(URI.open("http://www.cigargeeks.com/reviews/default.asp"))
+    #     # more = doc.css(".bbstable tr td") 
 
-        # more.each do |m|
-        #     more = m.text
-        #     CigarBrands::Cigar.new(more)
-        # end
-    end
+    #     # more.each do |m|
+    #     #     more = m.text
+    #     #     CigarBrands::Cigar.new(more)
+    #     # end
+    # end
 
 
     # def self.show_brand_details(brand)

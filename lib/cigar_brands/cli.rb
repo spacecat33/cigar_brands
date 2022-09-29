@@ -122,27 +122,27 @@ class CigarBrands::CLI
             puts "#{index}. #{cigar.name}"
         end
         puts "This is the end of the list of cigars"
-        # user_input
-    end
-
-    def get_testuser_cigar
-        puts "\n#{@@grn}Please choose a cigar from the above list to see some cool and uncool information."
-        puts ""
-        chosen_cigar = gets.strip.to_i  
-        show_cigar_for(chosen_cigar) if valid_input(chosen_cigar, @cigars)
-    end
-
-    def show_cigar_for(chosen_cigar)
-        cigar = @cigars[chosen_cigar - 1]
-        cigar.get_more
-        puts "\n#{@@blu}Here is the cool and uncool information for your selection: #{cigar.name}#{@@white}\n"
-        puts ""
-        cigar.more.each.with_index(1) do |more, index|
-            puts "#{index}. #{more.name}."
-        end
-        # binding.pry
         user_input
     end
+
+    # def get_testuser_cigar
+    #     puts "\n#{@@grn}Please choose a cigar from the above list to see some cool and uncool information."
+    #     puts ""
+    #     chosen_cigar = gets.strip.to_i  
+    #     show_cigar_for(chosen_cigar) if valid_input(chosen_cigar, @cigars)
+    # end
+
+    # def show_cigar_for(chosen_cigar)
+    #     cigar = @cigars[chosen_cigar - 1]
+    #     cigar.get_more
+    #     puts "\n#{@@blu}Here is the cool and uncool information for your selection: #{cigar.name}#{@@white}\n"
+    #     puts ""
+    #     cigar.more.each.with_index(1) do |more, index|
+    #         puts "#{index}. #{more.name}."
+    #     end
+    #     # binding.pry
+    #     user_input
+    # end
 
     # def display_results(page_number)
     #     puts "Here are the results for page #{@page_number}"
