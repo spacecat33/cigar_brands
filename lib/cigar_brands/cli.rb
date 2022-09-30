@@ -1,7 +1,7 @@
 
 class CigarBrands::CLI 
     
-    @@pages = ["1", "2", "3", "4", "5"]
+    # @@pages = ["1", "2", "3", "4", "5"]
 
     @@grn="\e[1;32m"
     @@white="\e[0m"
@@ -119,10 +119,10 @@ class CigarBrands::CLI
         puts "\n#{@@blu}Here are test cigar details for #{brand.name}" 
         CigarBrands::Cigar.all.each do |cigar|
             puts ""
-            puts "#{cigar.name}"
-            puts "#{cigar.length}"
-            puts "#{cigar.gauge}"
-            puts "#{cigar.country}"
+            puts "Cigar Name:   #{cigar.name}"
+            puts "Length:  #{cigar.length}"
+            puts "Ring Gauge:  #{cigar.gauge}"
+            puts "Country:  #{cigar.country}"
         end
         user_input
     end
