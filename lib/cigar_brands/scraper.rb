@@ -31,10 +31,25 @@ class CigarBrands::Scraper
         cigar_rows = doc.css(".bbstable tr") 
 
         cigar_rows.drop(2).each do |n|
-            binding.pry
-            cigar_row = n.text
-            # CigarBrands::Cigar.new(cigar_row) #add brand object to cigar array
+            # binding.pry
+            cigar_row = n
+                @name = cigar_row.css("td:nth-child(1)").text
+                @length = cigar_row.css("td:nth-child(2)").text
+                @gauge = cigar_row.css("td:nth-child(3)").text
+                @country = cigar_row.css("td:nth-child(4)").text
+            CigarBrands::Cigar.new(@name, @length, @gauge, @country) #add brand object to cigar array - note that n.css("td:nth-child(1)").text = the different columns
+            # binding.pry
+            # CigarBrands::Cigar.self.save
+        #     cigars_hash = { 
+        #         name: name,
+        #         length: length,
+        #         gauge: gauge,
+        #         country: country,
+        #     }
+        # @cigars << cigars_hash
+                # binding.pry
         end
+        # @cigars
     end
 
     # def self.get_cigarmore(cigar) # for 'more

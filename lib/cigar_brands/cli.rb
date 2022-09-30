@@ -20,9 +20,10 @@ class CigarBrands::CLI
         get_testbrand_results
         display_testbrand_results
         get_testuser_brand
-        get_testcigar_results
-        display_testcigar_results
-        get_testuser_cigar
+        show_brand_for(@chosen_brand)
+        # get_testcigar_results
+        # display_testcigar_results
+        # get_testuser_cigar
         
         
         # display_results(@page_number)
@@ -108,28 +109,41 @@ class CigarBrands::CLI
 
     def get_testuser_brand
         puts "\n#{@@grn}test - ask user to choose a brand name from the list for cigar information (note that 'advanced search' returns nil so we recommend you start from 2 onwards"
-        chosen_brand = gets.strip.to_i  
-        show_brand_for(chosen_brand) if valid_input(chosen_brand, @brands)
+        @chosen_brand = gets.strip.to_i  
+        show_brand_for(@chosen_brand) if valid_input(@chosen_brand, @brands)
     end
 
     def show_brand_for(chosen_brand)
         brand = @brands[chosen_brand - 1]
         CigarBrands::Scraper.get_brandcigar_details(brand) #scrape cigars_for_chosen_brand
         puts "\n#{@@blu}Here are test cigar details for #{brand.name}" 
-    end
-
-    
-
-    
-
-    def display_testcigar_results
-        puts "Here is a list of cigars"
-        @cigars.each.with_index(1) do |cigar, index|
-            puts "#{index}. #{cigar.name}"
+        CigarBrands::Cigar.all.each do |cigar|
+            puts ""
+            puts "#{cigar.name}"
+            puts "#{cigar.length}"
+            puts "#{cigar.gauge}"
+            puts "#{cigar.country}"
         end
-        puts "This is the end of the list of cigars"
         user_input
     end
+
+    # def get_testcigar_results
+    #     # CigarBrands::Scraper.get_brand_details(@page_number)
+        
+    #     puts "cigar class has now got the list of cigar results stored in an array"
+    #     # binding.pry
+    # end
+
+    
+
+    # def display_testcigar_results
+    #     puts "Here is a list of cigars"
+    #     @cigars.each.with_index(1) do |cigar, index|
+    #         puts "#{index}. #{cigar.name}"
+    #     end
+    #     puts "This is the end of the list of cigars"
+    #     user_input
+    # end
 
     # def get_testuser_cigar
     #     puts "\n#{@@grn}Please choose a cigar from the above list to see some cool and uncool information."
