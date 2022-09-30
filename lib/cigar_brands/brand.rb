@@ -5,6 +5,7 @@ class CigarBrands::Brand
 
     def initialize(name)
         @name = name
+        @cigars = [] # create a method here that expects cigar object and add it to this array because a brand has many cigars
         save
     end
 

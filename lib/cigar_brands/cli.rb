@@ -1,7 +1,7 @@
 
 class CigarBrands::CLI 
     
-    # attr_accessor :page_number, :brand
+    @@pages = ["1", "2", "3", "4", "5"]
 
     @@grn="\e[1;32m"
     @@white="\e[0m"
@@ -14,7 +14,7 @@ class CigarBrands::CLI
         puts ""
         puts "Here you can find information on different cigar brands!"
         puts ""
-        # get_page_numbers
+        # get_user_page_number
         # list_test_pages
         # list_page_numbers
         get_testbrand_results
@@ -31,14 +31,24 @@ class CigarBrands::CLI
         # get_brand_details(number)
     end
 
+    
     # def get_call_decision
     #     # user_input
         
     # end
 
-    # def get_page_numbers
-    #     @pages = CigarBrands::Page.all 
-    #     # binding.pry
+    # def display_page_numbers
+    #     puts "\n#{@@blu}tester brand list"
+    #     @pages.each.with_index(1) do |page, index|
+    #         puts "#{index}. #{page.text}"
+    #     end
+    #     puts "tester page number list"
+    # end
+
+    # def get_testuser_page()
+    #     puts "\n#{@@grn}test - please enter a page number between 1 and 72"
+    #     @page_number = gets.strip.to_i  
+    #     show_page_for(@page_number) if valid_input(chosen_page, @page_number)
     # end
 
     # def list_test_pages
@@ -104,15 +114,11 @@ class CigarBrands::CLI
 
     def show_brand_for(chosen_brand)
         brand = @brands[chosen_brand - 1]
-        puts "\n#{@@blu}Here are test cigar details for #{brand.name}"
+        CigarBrands::Scraper.get_brandcigar_details(brand) #scrape cigars_for_chosen_brand
+        puts "\n#{@@blu}Here are test cigar details for #{brand.name}" 
     end
 
-    def get_testcigar_results
-        # CigarBrands::Scraper.get_brand_details(@page_number)
-        @cigars = CigarBrands::Cigar.all  
-        puts "cigar class has now got the list of cigar results stored in an array"
-        # binding.pry
-    end
+    
 
     
 

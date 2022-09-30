@@ -1,4 +1,5 @@
 class CigarBrands::Scraper 
+
     # def self.scrape_pages(page_number = 1)
     #     doc = Nokogiri::HTML(URI.open("http://www.cigargeeks.com/cigardb/default.asp?action=&page=#{page_number}"))
     #     CigarBrands::Page.new(@page_number)
@@ -24,18 +25,19 @@ class CigarBrands::Scraper
         end
     end
 
-    def self.get_brandcigar_details
-        doc = Nokogiri::HTML(URI.open("http://www.cigargeeks.com/cigardb/default.asp?action=srchrslt&cigar_brand=#{@chosen_cigar}"))
+    def self.get_brandcigar_details(brand) #pass in brand_object here
+        doc = Nokogiri::HTML(URI.open("http://www.cigargeeks.com/cigardb/default.asp?action=srchrslt&cigar_brand=#{brand.name.gsub(" ", "+")}"))
         
-        names = doc.css(".bbstable tr td") 
+        cigar_rows = doc.css(".bbstable tr") 
 
-        names.each do |n|
-            name = n.text
-            CigarBrands::Cigar.new(name)
+        cigar_rows.drop(2).each do |n|
+            binding.pry
+            cigar_row = n.text
+            # CigarBrands::Cigar.new(cigar_row) #add brand object to cigar array
         end
     end
 
-    # def self.get_cigarmore(cigar) # for 'more'
+    # def self.get_cigarmore(cigar) # for 'more
     #     CigarBrands::More.new("cool info", cigar)
     #     CigarBrands::More.new("uncool info", cigar)
     #     # doc = Nokogiri::HTML(URI.open("http://www.cigargeeks.com/reviews/default.asp"))
