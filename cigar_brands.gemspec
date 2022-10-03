@@ -8,16 +8,16 @@ Gem::Specification.new do |spec|
   spec.authors = ["spacecat33"]
   spec.email = ["spacecat33"]
 
-  spec.summary = "Write a short summary, because RubyGems requires one."
-  spec.description = "Write a longer description or delete this line."
-  spec.homepage = "http://www.test/com"
+  spec.summary = "Helps find the cigars that different brands make."
+  spec.description = "You choose a brand and then it will give you a list of that brand's cigars with some additional information about those cigars."
+  spec.homepage = "https://github.com/spacecat33/cigar_brands"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"
 
   spec.metadata["allowed_push_host"] = "http://www.test/com"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "http://www.test/com"
+  spec.metadata["source_code_uri"] = "https://github.com/spacecat33/cigar_brands"
   spec.metadata["changelog_uri"] = "http://www.test/com"
 
   # Specify which files should be added to the gem when it is released.

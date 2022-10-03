@@ -16,12 +16,17 @@ class CigarBrands::Scraper
 
         
            cigars = doc.css(".bbstable tr")
-            cigars.drop(2).each do |n|
-                name = n.css("td:nth-child(1)").text
-                length = n.css("td:nth-child(2)").text
-                gauge = n.css("td:nth-child(3)").text
-                country = n.css("td:nth-child(4)").text
-            CigarBrands::Cigar.new(brand, name, length, gauge, country) #add brand object to cigar array - note that n.css("td:nth-child(1)").text = the different columns
+            cigars.drop(2).each do |c|
+                name = c.css("td:nth-child(1)").text
+                length = c.css("td:nth-child(2)").text
+                gauge = c.css("td:nth-child(3)").text
+                country = c.css("td:nth-child(4)").text
+                filler = c.css("td:nth-child(5)").text
+                wrapper = c.css("td:nth-child(6)").text
+                color = c.css("td:nth-child(7)").text
+                strength = c.css("td:nth-child(8)").text
+                rating = c.css("td:nth-child(9)").text
+            CigarBrands::Cigar.new(brand, name, length, gauge, country, filler, wrapper, color, strength, rating) #add brand object to cigar array - note that n.css("td:nth-child(1)").text = the different columns
         end
         # @cigars
     end

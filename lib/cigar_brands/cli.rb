@@ -1,22 +1,17 @@
 
 class CigarBrands::CLI 
-    
-    # @@pages = ["1", "2", "3", "4", "5"]
-
     @@grn="\e[1;32m"
     @@white="\e[0m"
     @@blu="\e[1;34m"
     @@cyn="\e[1;36m"
 
-
-
     def call
         puts ""
-        puts "\n#{@@grn}Welcome to Cigar Brands!#{@@white}\n"
+        puts "\n#{@@grn}Welcome to Cigar Brands!"
         puts ""
-        puts "Here you can find information on different cigar brands!"
+        puts "\n#{@@cyn}Here you can find information on different cigar brands!#{@@white}\n"
         puts ""
-        get_testbrand_results
+        get_brand_results
         display_testbrand_results
         get_testuser_brand
     end
@@ -25,34 +20,38 @@ class CigarBrands::CLI
         input.to_i <= data.length && input.to_i > 0
     end
 
-    def get_testbrand_results
+    def get_brand_results
         @brands = CigarBrands::Brand.all  
     end
 
     def display_testbrand_results
-        puts "\n#{@@blu}tester brand list"
-        @brands.each.with_index(1) do |brand, index|
+        @brands.drop(2).each.with_index(1) do |brand, index|
             puts "#{index}. #{brand.name}"
         end
-        puts "tester brand list end"
     end
 
     def get_testuser_brand
-        puts "\n#{@@grn}test - ask user to choose a brand name from the list for cigar information (note that 'advanced search' returns nil so we recommend you start from 2 onwards"
+        puts "\n#{@@grn}Please choose a brand name from the list to see details about their different cigars."
+        puts ""
         @chosen_brand = gets.strip.to_i  
         show_cigars_for(@chosen_brand) if valid_input(@chosen_brand, @brands)
     end
 
     def show_cigars_for(chosen_brand)
         brand = @brands[chosen_brand - 1]
-        brand.get_cigars #scrape cigars_for_chosen_brand
-        puts "\n#{@@blu}Here are test cigar details for #{brand.name}" 
+        brand.get_cigars #scrape cigars_for_chosen_brand so a brand knows what cigars it has (i.e. has many rel)
+        puts "\n#{@@cyn}Here are test cigar details for #{brand.name}#{@@white}\n" 
         brand.cigars.each do |cigar|
             puts ""
             puts "Cigar Name:   #{cigar.name}"
-            puts "Length:  #{cigar.length}"
-            puts "Ring Gauge:  #{cigar.gauge}"
-            puts "Country:  #{cigar.country}"
+            puts "    Length:   #{cigar.length}"
+            puts "Ring Gauge:   #{cigar.gauge}"
+            puts "   Country:   #{cigar.country}"
+            puts "   Filler:    #{cigar.filler}"
+            puts "   Wrapper:   #{cigar.wrapper}"
+            puts "   Color:     #{cigar.color}"
+            puts "   Strength:  #{cigar.strength}"
+            puts "   Rating:    #{cigar.rating}"
         end
         user_input
     end

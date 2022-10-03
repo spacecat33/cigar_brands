@@ -1,8 +1,10 @@
 # CigarBrands
 
-Welcome to cigar_brands, where you can find information on different cigar brands!
+Welcome to cigar_brands, where you can find information on different types of cigars!
 
-To start, you will need to follow the below installation and development instructions (noting you will need the gems, nokogiri and open-uri).
+To start, you will need to follow the below installation and development instructions (noting you will need the gems, nokogiri and open-uri). 
+
+Once set up, select a brand from the list to see what cigars that brand has! Enjoy!
 
 ## Installation
 
@@ -16,7 +18,7 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 ## Usage
 
-Search for different cigar brand names across c.72 pages.
+Select a brand to see what cigars they make.
 
 ## Development
 

@@ -5,13 +5,14 @@
 - user is asked if they'd like to see the list of brands
 - user sees brand names in a numbered list
 - user selects number in list
-- user see the selected brand details
+- user sees the selected brand's cigars
 
 Classes
 - Brand
+- Cigar
 - CLI
 - Scraper
 
 
 - get some scraped data
-- allow user to select a different page number
+- allow user to select a different brand
