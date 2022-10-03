@@ -38,9 +38,9 @@ class CigarBrands::CLI
     end
 
     def show_cigars_for(chosen_brand)
-        brand = @brands[chosen_brand - 1]
+        brand = @brands[chosen_brand + 1]
         brand.get_cigars #scrape cigars_for_chosen_brand so a brand knows what cigars it has (i.e. has many rel)
-        puts "\n#{@@cyn}Here are test cigar details for #{brand.name}#{@@white}\n" 
+        puts "\n#{@@cyn}Here are the cigars produced by the brand: #{brand.name}#{@@white}\n" 
         brand.cigars.each do |cigar|
             puts ""
             puts "Cigar Name:   #{cigar.name}"
