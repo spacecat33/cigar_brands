@@ -1,16 +1,16 @@
 class CigarBrands::Cigar
-    attr_accessor :name
-    attr_reader :length, :gauge, :country
+    attr_accessor :brand, :name, :length, :gauge, :country
     
     @@all = []
    
 
-    def initialize(name, length, gauge, country)
+    def initialize(brand, name, length, gauge, country)
+        @brand = brand
         @name = name
         @length = length
         @gauge = gauge
         @country = country
-        # chosen_brand(brand)
+        add_to_brand
         save
     end
 
@@ -19,11 +19,12 @@ class CigarBrands::Cigar
         @@all
     end
 
+    def add_to_brand 
+        @brand.cigars << self unless @brand.cigars.include?(self)
+    end
+
     def save
         @@all << self
     end
 
-    # def chosen_brand(brand)
-    #     @brand
-    # end
 end
