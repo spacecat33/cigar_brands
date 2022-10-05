@@ -19,13 +19,12 @@ class CigarBrands::Cigar
         save
     end
 
-    def self.all
-        CigarBrands::Scraper.get_brandcigar_details(brand) if @@all.empty?
+    def self.all  
         @@all
     end
 
     def add_to_brand 
-        @brand.cigars << self unless @brand.cigars.include?(self)
+        brand.cigars << self unless brand.cigars.include?(self) #self.brand.cigars
     end
 
     def save
@@ -33,3 +32,17 @@ class CigarBrands::Cigar
     end
 
 end
+
+# Side note re ruby methods:
+# def trees  
+#     tree = "oak"
+#     if tree == "oak"
+#        return "oak" # the return keyword stops execution of the method so would return oak. remoning return keyword, ruby would return the last line evaluated.
+#     else 
+#         "fir"
+#     end
+#     "pine"
+# end
+
+# found_tree = trees 
+# puts found_tree

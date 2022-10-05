@@ -6,7 +6,7 @@ class CigarBrands::Brand
     def initialize(name)
         @name = name
         @cigars = [] # a method that expects cigar objects and add it to this array because a brand has many cigars
-        save
+        save #can also be written self.save (instance method) - if not an explicit self, it will auto apply self
     end
 
     def self.all

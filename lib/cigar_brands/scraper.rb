@@ -5,7 +5,7 @@ class CigarBrands::Scraper
         
         names = doc.css(".bbstable a") #bbstable tr td
 
-        names.each do |n|
+        names.each do |n| #can change to names.drop(2).each do |n| - to validate here before its stored and not in cli
             name = n.text
             CigarBrands::Brand.new(name)
         end

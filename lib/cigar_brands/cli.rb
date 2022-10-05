@@ -12,6 +12,8 @@ class CigarBrands::CLI
         puts "\n#{@@cyn}Here you can find information on different cigar brands!#{@@white}\n"
         puts ""
         get_brand_results
+        # puts "Loading brands..."
+        # sleep(3)
         display_testbrand_results
         get_testuser_brand
     end
@@ -25,7 +27,7 @@ class CigarBrands::CLI
     end
 
     def display_testbrand_results
-        @brands.drop(2).each.with_index(1) do |brand, index|
+        @brands.drop(2).each.with_index(1) do |brand, index|  #can remove drop(2) and putin scraper class
             puts "#{index}. #{brand.name}"
         end
     end
@@ -33,8 +35,15 @@ class CigarBrands::CLI
     def get_testuser_brand
         puts "\n#{@@grn}Please choose a brand name from the list to see details about their different cigars."
         puts ""
-        @chosen_brand = gets.strip.to_i  
+        @chosen_brand = gets.strip.to_i  #instance variables are available within instance methods of their class
         show_cigars_for(@chosen_brand) if valid_input(@chosen_brand, @brands)
+        puts ""
+        puts "Invalid entry. You must select a number displayed in the list."
+        puts ""
+        puts "\n#{@@grn}Restarting programme...Loading...."
+        puts ""
+        sleep(6)
+        call
     end
 
     def show_cigars_for(chosen_brand)
